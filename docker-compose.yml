@@ -1,0 +1,39 @@
+version: '3.9'
+services:
+  # Mysql
+  Mysql:
+    container_name: mysql_container
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_USER: 'admin'
+      MYSQL_PASSWORD: 'admin'
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql-volumes:/var/lib/mysql
+  # Mongodb
+  Mongodb:
+    container_name: mongodb_container
+    image: mongo:latest
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+    - 27017:27017
+    volumes:
+      - mongodb-volumes:/data/db
+    depends_on:
+    - Mysql
+  # Nodejs App
+  App:
+    build: .
+    ports:
+      - 51005:51005
+    depends_on:
+      - Mongodb
+# volume List
+volumes:
+  db-volumes
+  mongodb-volumes
