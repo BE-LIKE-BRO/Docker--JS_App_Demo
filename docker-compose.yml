@@ -36,6 +36,4 @@ services:
 # volume List
 volumes:
   db-volumes:
-    driver: local
   mongodb-volumes:
-    driver: local
