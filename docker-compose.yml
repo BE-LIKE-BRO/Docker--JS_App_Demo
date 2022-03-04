@@ -23,7 +23,7 @@ services:
     ports:
     - 27017:27017
     volumes:
-      - mongodb-volumes: /data/db
+      - mongodb-volumes:/data/db
     depends_on:
     - Mysql
   # Nodejs App
@@ -36,4 +36,6 @@ services:
 # volume List
 volumes:
   db-volumes:
+    driver: local
   mongodb-volumes:
+    driver: local
