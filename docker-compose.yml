@@ -27,7 +27,7 @@ services:
     depends_on:
     - Mysql
   # Nodejs App
-  App:
+  app:
     build: .
     ports:
       - 51005:51005
