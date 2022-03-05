@@ -6,6 +6,7 @@ services:
     image: mysql:latest
     restart: always
     environment:
+      MYSQL_DATABASE: BE-LIKE-BRO
       MYSQL_USER: 'admin'
       MYSQL_PASSWORD: 'admin'
     ports:
@@ -17,15 +18,10 @@ services:
     container_name: mongodb_container
     image: mongo:latest
     restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: admin
     ports:
     - 27017:27017
     volumes:
       - mongodb-volumes:/data/db
-    depends_on:
-    - Mysql
   # Nodejs App
   app:
     build: .
@@ -33,9 +29,8 @@ services:
       - 51005:51005
     depends_on:
       - Mongodb
+      - Mysql
 # volume List
 volumes:
   mysql-volumes:
-    driver: local
   mongodb-volumes:
-    driver: local
