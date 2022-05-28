@@ -6,7 +6,6 @@ All Images have been configured to run with docker-compose
 PREREQUISITES:
 
 Docker & Docker-compose installed on computer
-aws user account with ec2 action privileges
 
 EXECUTION PROCESS
 1.  open this project root directory and run 'docker-compose up'
